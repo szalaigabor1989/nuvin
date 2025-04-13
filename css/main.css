@@ -1,0 +1,517 @@
+/* ================================================= */
+/* ||               TABLE OF CONTENT              || */
+/* ================================================= */
+/* || 01 :: Variables                             || */
+/* || 02 :: Default CSS                           || */
+/* || 03 :: Preloader                             || */
+/* || 04 :: Header                                || */
+/* || 05 :: Hero                                  || */
+/* || 06 :: About                                 || */
+/* || 07 :: Services                              || */
+/* || 08 :: Numbers                               || */
+/* || 09 :: Portfolio                             || */
+/* || 10 :: Modal                                 || */
+/* || 11 :: Testimonials                          || */
+/* || 12 :: Contact                               || */
+/* || 13 :: Footer                                || */
+/* ================================================= */
+
+/*  01. Variables                   */
+:root {
+    --primary-color: #7c3aed;
+    --secondary-color: #c4b5fd;
+    --accent-color: #9f67ff;
+    --dark-text: #1f2937;
+    --light-text: #e5e7eb;
+    --dark-background: #1a1a1a;
+    --light-background: #f9fafb;
+    --white: #fff;
+}
+
+/*  02. Default CSS                 */
+html, body {
+    min-height: 100%;
+}
+
+body {
+    line-height: 1.75;
+    font-family: 'Montserrat', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--dark-text);
+    background-color: var(--white);
+}
+
+.section-title {
+    display: inline-block;
+    position: relative;
+}
+
+.section-title span {
+    position: relative;
+    z-index: 1;
+}
+
+.section-title::before {
+    width: 40px;
+    height: 10px;
+    position: absolute;
+    left: -8px;
+    bottom: 5px;
+    background-color: var(--primary-color);
+    content: '';
+    z-index: 0;
+    opacity: .35;
+}
+
+.section-title--white::before {
+    background-color: var(--white);
+}
+
+/*  03. Preloader                   */
+.preloader {
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    background-color: var(--white);
+    z-index: 100;
+    transition: opacity .2s ease-in-out;
+}
+
+.preloader.loaded {
+    opacity: 0;
+    z-index: -100;
+}
+
+/*  04. Header                      */
+header {
+    position: fixed;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    border-top: 1.5rem solid var(--white);
+    background-color: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    z-index: 25;
+    transition: all .2s ease-in-out;
+
+    @media screen and (max-width: 991px) {
+        left: 1rem;
+        right: 1rem;
+        border-top: 1rem solid var(--white);
+    }
+}
+
+header nav.navbar {}
+header nav.navbar .navbar-brand {
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: .2rem;
+    transition: color .2s ease-in-out;
+}
+
+header nav.navbar .navbar-toggler {
+    width: 38px;
+    height: 38px;
+    background-color: transparent;
+    border: none;
+    gap: 4px;
+}
+
+header nav.navbar .navbar-toggler:focus,
+header nav.navbar .navbar-toggler:active,
+header nav.navbar .navbar-toggler:active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+header nav.navbar .navbar-toggler span {
+    background-color: var(--white);
+    border-radius: 10px;
+    height: 2px;
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+header nav.navbar .navbar-toggler span:nth-of-type(1) {
+    width: 50%;
+}
+
+header nav.navbar .navbar-toggler span:nth-of-type(2) {
+    width: 100%;
+}
+
+header nav.navbar .navbar-toggler span:nth-of-type(3) {
+    width: 75%;
+}
+
+header nav.navbar .navbar-toggler[aria-expanded="true"] span:nth-of-type(1) {
+    transform-origin: top;
+    transform: rotateZ(45deg) translate(3px, 0.5px);
+    width: 10px;
+}
+
+header nav.navbar .navbar-toggler[aria-expanded="true"] span:nth-of-type(2) {
+    transform-origin: center;
+    transform: translate(0, 0) rotateZ(-45deg);
+    width: 20px;
+}
+
+header nav.navbar .navbar-toggler[aria-expanded="true"] span:nth-of-type(3) {
+    transform-origin: bottom right;
+    transform: translate(6.5px, 1px) rotateZ(45deg);
+    width: 10px;
+}
+
+header nav.navbar .navbar-nav {}
+header nav.navbar .navbar-nav .nav-link {
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--white);
+}
+
+header nav.navbar .navbar-nav .nav-link:hover,
+header nav.navbar .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+}
+
+header.fixed {
+    background-color: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+header.fixed nav.navbar .navbar-brand {
+    color: var(--primary-color);
+}
+
+header.fixed nav.navbar .navbar-toggler span {
+    background-color: var(--primary-color);
+}
+
+header.fixed nav.navbar .navbar-nav .nav-link {
+    color: var(--dark-text);
+}
+
+header.fixed nav.navbar .navbar-nav .nav-link:hover,
+header.fixed nav.navbar .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+}
+
+/*  05. Hero                        */
+.hero {
+    width: 100%;
+    height: calc(100vh - 3rem);
+    color: var(--light-text);
+    background-image: url('../images/hero.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-color: var(--primary-color);
+
+    @media screen and (max-width: 767px) {
+        height: calc(100vh - 2rem);
+    }
+}
+
+.hero p {
+    font-weight: 800;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+}
+
+.hero a {
+    padding: .75rem 2rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color .3s ease;
+}
+
+.hero a:hover {
+    background-color: var(--accent-color);
+}
+
+/*  06. About                       */
+.about {
+    color: var(--dark-text);
+    background-color: var(--white);
+}
+
+.about h3 {
+    font-weight: 800;
+}
+
+.about h3 small {
+    font-size: .75rem;
+}
+
+.about a {
+    padding: .75rem 2rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color .3s ease;
+}
+
+.about a:hover {
+    background-color: var(--accent-color);
+}
+
+.about h3 {
+    font-weight: 800;
+}
+
+.about .skill p {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.about .skill .progress {
+    height: .5rem;
+    background-color: var(--light-background);
+}
+
+.about .skill .progress .progress-bar {
+    background-color: var(--primary-color);
+    transition: none;
+}
+
+/*  07. Services                    */
+.services {
+    color: var(--dark-text);
+    background-color: var(--light-background);
+}
+
+.services .services-slider .service .service-icon {
+    width: 80px;
+    height: 80px;
+    color: var(--white);
+    background-color: var(--secondary-color);
+    transition: all .2s ease-in-out;
+}
+
+.services .services-slider .service .service-icon i {
+    font-size: 2rem;
+}
+
+.services .services-slider .service h4 {
+    font-weight: 700;
+}
+
+.services .services-slider .services-slider-pagination .swiper-pagination-bullet {
+    width: 2rem;
+    height: .4rem;
+    border-radius: 0;
+    opacity: 1;
+    background-color: var(--secondary-color);
+}
+
+.services .services-slider .services-slider-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+}
+
+.services .services-slider .service:hover .service-icon {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
+}
+
+/*  08. Numbers                     */
+.numbers {
+    color: var(--light-text);
+    background-color: var(--primary-color);
+}
+
+.numbers i {
+    font-size: 2.5rem;
+}
+
+/*  09. Portfolio                   */
+.portfolio {
+    color: var(--dark-text);
+    background-color: var(--light-background);
+}
+
+.portfolio .portfolio-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio .portfolio-item .portfolio-item-image {}
+.portfolio .portfolio-item .portfolio-item-image img {
+    object-fit: cover;
+    transition: all .2s ease-in-out;
+}
+
+.portfolio .portfolio-item .portfolio-item-text {
+    padding: 1rem;
+    position: absolute;
+    top: 1rem;
+    inset: 1rem;
+    border: 1px solid var(--white);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, .2);
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.portfolio .portfolio-item .portfolio-item-text .portfolio-item-text-title {
+    transform: translateY(20px);
+    opacity: 0;
+    font-weight: 800;
+    transition: all .2s ease-in-out .1s;
+}
+
+.portfolio .portfolio-item .portfolio-item-text .portfolio-item-text-description {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all .2s ease-in-out .2s;
+}
+
+.portfolio .portfolio-item:hover .portfolio-item-image img {
+    transform: scale(1.1);
+    filter: blur(2px);
+}
+
+.portfolio .portfolio-item:hover .portfolio-item-text {
+    opacity: 1;
+}
+
+.portfolio .portfolio-item:hover .portfolio-item-text .portfolio-item-text-title,
+.portfolio .portfolio-item:hover .portfolio-item-text .portfolio-item-text-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*  10. Modal                       */
+.modal-open .modal-backdrop {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-open .modal-backdrop.show {
+    opacity: 1;
+}
+
+.modal .modal-dialog .modal-content .modal-body img {
+    object-fit: cover;
+}
+
+.modal .modal-dialog .modal-content .modal-body h3 {
+    font-weight: 800;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/*  11. Testimonials                */
+.testimonials {
+    color: var(--light-text);
+    /*background-image: url('../images/undraw_well-done_kqud.svg');*/
+    /*background-position: bottom left;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: auto 400px;*/
+    background-color: var(--primary-color);
+}
+
+.testimonials .testimonials-container {
+    color: var(--dark-text);
+    background-color: var(--secondary-color);
+}
+
+.testimonials .testimonials-container p {
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.testimonials .testimonials-container p::before {
+    content: '\275D';
+    display: inline-block;
+    margin-right: .2rem;
+}
+
+.testimonials .testimonials-container p::after {
+    content: '\275E';
+    display: inline-block;
+    margin-left: .2rem;
+}
+
+.testimonials .testimonials-container h4 {
+    color: var(--primary-color);
+}
+
+.testimonials .testimonials-container h4 small {
+    color: var(--dark-text);
+}
+
+.testimonials .testimonials-container .img-container {
+    width: 80px;
+    height: 80px;
+}
+
+.testimonials .testimonials-container .img-container img {
+    object-fit: cover;
+}
+
+.contact-infos {
+    color: var(--dark-text);
+    background-color: var(--light-background);
+}
+
+/*  12. Contact                     */
+.contact-infos i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.contact-infos form .form-control {
+    font-size: .875rem;
+}
+
+.contact-infos form .form-control:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+.contact-infos form [type="submit"] {
+    padding: .75rem 2rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color .3s ease;
+}
+
+.contact-infos form [type="submit"]:hover {
+    background-color: var(--accent-color);
+}
+
+/*  13. Footer                      */
+footer {
+    color: var(--light-text);
+    background-color: var(--dark-background);
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
